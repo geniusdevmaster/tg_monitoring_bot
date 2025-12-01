@@ -1,0 +1,22 @@
+{
+  "kori": {
+    "address": "HtTYHz1Kf3rrQo6AqDLmss7gq5WrkWAaXn3tupUZbonk",
+    "chain": "solana"
+  },
+  "aura": {
+    "address": "DtR4D9FtVoTX2569gaL837ZgrB6wNjj6tkmnX9Rdk9B2",
+    "chain": "solana"
+  },
+  "manyu": {
+    "address": "0x95af4af910c28e8ece4512bfe46f1f33687424ce",
+    "chain": "ethereum"
+  },
+  "neet": {
+    "address": "Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump",
+    "chain": "solana"
+  },
+  "67": {
+    "address": "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump",
+    "chain": "solana"
+  }
+}
