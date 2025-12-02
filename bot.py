@@ -67,12 +67,13 @@ class TokenMonitorBot:
     
     def parse_command(self, text: str) -> Optional[Dict]:
         """
-        Parse command like 'kori low:0.00237 high:0.00355' or 'kori low: 0.00237 high: 0.00355'
+        Parse command like 'kori 0.00237 0.00355'
         Returns dict with token_name, low, high or None if invalid
+        Format: token_name X Y (where X is low value and Y is high value)
         """
-        # Pattern: token_name low:value high:value (with optional spaces after colons)
-        # Allow spaces after colons: low: 0.00237 or low:0.00237
-        pattern = r'^(\w+)\s+low:\s*([\d.]+)\s+high:\s*([\d.]+)$'
+        # Pattern: token_name low_value high_value
+        # Allow scientific notation and decimal numbers
+        pattern = r'^(\w+)\s+([\d.eE+-]+)\s+([\d.eE+-]+)$'
         match = re.match(pattern, text.strip())
         
         if match:
@@ -97,8 +98,9 @@ class TokenMonitorBot:
             "/price <token_name> - Check current price of a token\n"
             "/start - Show this help message\n\n"
             "To monitor a token, send:\n"
-            "token_name low:0.00237 high:0.00355\n\n"
-            "Example: kori low:0.00237 high:0.00355"
+            "token_name X Y\n\n"
+            "Where X is low value and Y is high value\n"
+            "Example: kori 0.00237 0.00355"
         )
     
     async def price_command(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -159,8 +161,9 @@ class TokenMonitorBot:
         if not parsed:
             await update.message.reply_text(
                 "Invalid format. Please use:\n"
-                "token_name low:0.00237 high:0.00355\n\n"
-                "Example: kori low:0.00237 high:0.00355"
+                "token_name X Y\n\n"
+                "Where X is low value and Y is high value\n"
+                "Example: kori 0.00237 0.00355"
             )
             return
         
